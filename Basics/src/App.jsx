@@ -1,6 +1,8 @@
+import My from "./my"
+
 function App() {
   return (
-      <h1>VIVA GARNACHO</h1>   
+      <My/>  
   )
 }
 export default App
