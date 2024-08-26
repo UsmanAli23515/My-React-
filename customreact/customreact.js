@@ -1,4 +1,4 @@
-function customRender(reactElement,container) {
+function customRender(reactElement,mcontainer) {
     const domElement =document.createElement
     (reactElement.type)
     domElement.innerHTML = reactElement.children
@@ -6,7 +6,7 @@ function customRender(reactElement,container) {
 
     domElement.setAttribute(prop,reactElement.props[prop])
     }
-    container.appendChild(domElement)
+    mcontainer.appendChild(domElement)
 }
 
 let reactElement ={
