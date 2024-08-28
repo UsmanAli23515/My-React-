@@ -9,14 +9,21 @@ let [counter ,setCounter]= useState(10)
 
 let increase = ()=>{
   if(counter<20){
-  counter++
-setCounter(counter)
+  
+    setCounter(counter=>counter+1)
+    setCounter(counter=>counter+1)
+    setCounter(counter=>counter+1)
+    setCounter(counter=>counter+1)
+
   }
 }
 let decrease= ()=>{
   if(counter>0){
-  counter--
-  setCounter(counter)
+  setCounter(counter=>counter-1)
+  setCounter(counter=>counter-1)
+  setCounter(counter=>counter-1)
+  setCounter(counter=>counter-1)
+
   }
 }
   return (
