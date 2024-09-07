@@ -19,20 +19,22 @@ function App() {
       ])
     const Todo = ({todoo})=>{
         return(<>
-        <div className="m-4 border border-1 border-purple-400">
+        <div className="m-4 border border-1 border-purple-400 bg-black text-white py-4 rounded-lg 
+        font-semibold ">
 
-        <div className='todo'>{todoo.title}</div>
+        <div className='todo '>{todoo.title}</div>
         <div className='todo'>{todoo.desc}</div>
         </div>
  </>)
     } 
     return( <>
-    {showbtn && <button>I am shown when true</button>}
+    {showbtn && <button className='bg-green-600 text-white py-4'>I am shown when true</button>}
                 {/* <List/> */}
 {todos.map(todo=>{
     return <Todo todoo = {todo} />
 })}
-<button onClick={()=>setShowbtn(!showbtn)}>Click me</button>
+<button className='bg-blue-600 text-white'
+onClick={()=>setShowbtn(!showbtn)}>Click me</button>
                 </>);
 }
 
