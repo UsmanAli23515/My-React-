@@ -26,16 +26,16 @@ gap: 30px;
   margin-top: 0px;
   margin-bottom: 0px;
 }nav{
-  margin:0px;
+  margin-left:-8px;
   
 }
 nav,ul{
   display:flex;
   gap: 20px;
-  padding:9px 3px;
+  padding:5px 3px;
   background-color: gray;
   color: white;
-  width:220vh;
+  width:222vh;
   /* margin-right:0px; */
   /* margin-left:0px; */
   margin-bottom:8px;

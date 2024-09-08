@@ -13,6 +13,7 @@ let handleHover =()=>{
   console.log("you hovered me")
 }
 let handleChange = (e)=>{
+  // setForm({[e.target.name]:e.target.value})
   setForm({...form ,[e.target.name]:e.target.value})
 console.log(form)
 }
@@ -28,8 +29,10 @@ className='container'>
 {/* <input type='text' name= "email" value={form?.email} onChange={handleChange}/>
 <input type='text' name= "phone" value={form?.phone} onChange={handleChange}/> */}
 
-<input type='text' name= "email" value={form.email?form.email:""} onChange={handleChange}/>
-<input type='text' name= "phone" value={form.phone?form.phone:""} onChange={handleChange}/>
+<input type='text' name= "email" value={form.email?form.email:""}
+ placeholder='Enter your email' onChange={handleChange}/>
+<input type='text' name= "phone" value={form.phone?form.phone:""}
+ placeholder='Enter your phone number' onChange={handleChange}/>
 
     </>
   )
