@@ -1,7 +1,7 @@
 import { MdDelete } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 import Navbar from './components/Navbar';
-import { useState, useRef } from 'react';
+import { useState, useRef ,useEffect} from 'react';
 
 function App() {
   const [todoInput, setTodoInput] = useState(""); // State to manage the input field
@@ -14,6 +14,19 @@ function App() {
     ref.current.focus();
   };
 
+   useEffect(() => {
+    let todoString = localStorage.getItem("todos")
+    if(todoString){
+      let todos = JSON.parse(localStorage.getItem("todos")) 
+      setTodos(todos)
+    }
+  }, [])
+  
+
+  const saveToLS = (params) => {
+    localStorage.setItem("todos", JSON.stringify(todos))
+  }
+  
   // Add or edit todo function
   const handleAddOrEdit = () => {
     if (todoInput.trim() !== "") {
@@ -29,12 +42,16 @@ function App() {
         setTodos([...todos, { textt: todoInput, completed: false }]);
       }
       setTodoInput(""); // Clear input field after adding or editing
+      saveToLS()
+
     }
   };
   const handleEdit = (index) => {
     setTodoInput(todos[index].textt); // Set input to the selected todo's text
     setEditIndex(index); // Track the index of the todo being edited
     foc(); // Focus on the input field
+    saveToLS()
+
   };
 
   const handleDelete = (index) => {
@@ -43,6 +60,8 @@ function App() {
     if (editIndex === index) {
       setTodoInput("");
       setEditIndex(null);
+      saveToLS()
+
     }
   };
 
@@ -50,6 +69,8 @@ function App() {
     setTodos(todos.map((tod, i) =>
       i === index ? { ...tod, completed: !tod.completed } : tod
     ));
+    saveToLS()
+
   };
 
   return (
