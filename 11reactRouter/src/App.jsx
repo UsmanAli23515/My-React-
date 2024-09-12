@@ -6,27 +6,35 @@ import Home from './components/Home'
 import About from './components/About'
 import User from './components/User'
 function App() {
-  let router= createBrowserRouter([
+  let routerr= createBrowserRouter([
     {
       path: '/',
-      element: <><Navbar/><Home/></>
+      element: <>
+      <Navbar/><Home/>
+      </>
     },
     {
       path: '/login',
-      element: <><Navbar/><Login/></>
+      element: <>
+      <Navbar/><Login/>
+      </>
 
     },
     { path: '/about',
-      element: <><Navbar/><About/></>
+      element: <>
+      <Navbar/><About/>
+      </>
     },
     { path: '/user/:username',
-      element: <><Navbar/><User/></>
+      element: <>
+      <Navbar/><User/>
+      </>
     },
   ])
 
   return (
     <>
-           <RouterProvider router={router}/>
+           <RouterProvider router={routerr}/>
 
     </>
   )
