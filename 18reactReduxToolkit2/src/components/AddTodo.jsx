@@ -1,18 +1,32 @@
-import React from 'react'
-import {useState} from "react";
-import {useDispatch} from 'react-redux'
-import {addTodo} from "../redux/slice.js"
+import React, { useEffect } from 'react';
+import { useState } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { addTodo, updateTodo, clearEditingTodo } from "../redux/slice.js";
 
 function AddTodo() {
+  const [input, setInput] = useState('');
+  const dispatch = useDispatch();
+  
+  const editingTodo = useSelector(state => state.editingTodo);
 
-    const [input, setInput] = useState('')
-    const dispatch = useDispatch()
-
-    const addTodoHandler = (e) => {
-        e.preventDefault()
-        dispatch(addTodo(input))
-        setInput('')
+  useEffect(() => {
+    if (editingTodo) {
+      setInput(editingTodo.text);
+    } else {
+      setInput('');
     }
+  }, [editingTodo]);
+
+  const addTodoHandler = (e) => {
+    e.preventDefault();
+    if (editingTodo) {
+      dispatch(updateTodo({ id: editingTodo.id, text: input }));
+      dispatch(clearEditingTodo());
+    } else {
+      dispatch(addTodo(input));
+    }
+    setInput('');
+  };
 
   return (
     <form onSubmit={addTodoHandler} className="space-x-3 mt-12">
@@ -27,10 +41,19 @@ function AddTodo() {
         type="submit"
         className="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"
       >
-        Add Todo
+        {editingTodo ? "Update Todo" : "Add Todo"}
       </button>
+      {editingTodo && (
+        <button
+          type="button"
+          onClick={() => dispatch(clearEditingTodo())}
+          className="text-white bg-gray-500 border-0 py-2 px-4 focus:outline-none hover:bg-gray-600 rounded text-lg ml-2"
+        >
+          Cancel
+        </button>
+      )}
     </form>
-  )
+  );
 }
 
-export default AddTodo
+export default AddTodo;
