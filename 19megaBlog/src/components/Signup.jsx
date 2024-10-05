@@ -4,8 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { Button, Input, Logo } from "./index.js";
 import { login} from "../store/authSlice.js";
-import authService from "../appwrite/auth";
-
+import authService from "../appwrite/auth.js";
 
 function Signup() {
     const navigate = useNavigate()
