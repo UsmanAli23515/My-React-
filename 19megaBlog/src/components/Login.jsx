@@ -6,6 +6,7 @@ import {useDispatch} from "react-redux"
 import authService from "../appwrite/auth"
 import {useForm} from "react-hook-form"
 
+
 function Login() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -32,8 +33,8 @@ function Login() {
     >
         <div className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10`}>
         <div className="mb-2 flex justify-center">
-                    <span className="inline-block w-full max-w-[100px]">
-                        <Logo width="100%" />
+                    <span className="inline-block w-full max-w-[100px] ml-20">
+                        <Logo />
                     </span>
         </div>
         <h2 className="text-center text-2xl font-bold leading-tight">Sign in to your account</h2>
@@ -52,6 +53,7 @@ function Login() {
                 <Input
                 label="Email: "
                 placeholder="Enter your email"
+                className="pl-8"
                 type="email"
                 {...register("email", {
                     required: true,
@@ -62,9 +64,10 @@ function Login() {
                 })}
                 />
                 <Input
-                label="Password: "
+                label="Password:"
                 type="password"
                 placeholder="Enter your password"
+                className="pl-8"
                 {...register("password", {
                     required: true,
                 })}

@@ -15,11 +15,11 @@ function Home() {
 
   if (posts.length === 0) {
       return (
-          <div className="w-full py-8 mt-4 text-center">
+          <div className="w-full py-8 mt-4 text-center mb-60">
               <Container>
                   <div className="flex flex-wrap">
                       <div className="p-2 w-full">
-                          <h1 className="text-2xl font-bold hover:text-gray-500">
+                          <h1 className="text-5xl font-bold mt-32 text-white">
                               Login to read posts
                           </h1>
                       </div>
@@ -29,7 +29,7 @@ function Home() {
       )
   }
   return (
-      <div className='w-full py-8'>
+      <div className='w-full py-8 bg-violet-200'>
           <Container>
               <div className='flex flex-wrap'>
                   {posts.map((post) => (

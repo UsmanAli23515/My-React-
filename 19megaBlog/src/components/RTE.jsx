@@ -1,6 +1,7 @@
 import React from 'react'
 import {Editor } from '@tinymce/tinymce-react';
 import {Controller } from 'react-hook-form';
+import conf from "../conf/conf"
 
 
 export default function RTE({name, control, label, defaultValue =""}) {
@@ -14,7 +15,7 @@ export default function RTE({name, control, label, defaultValue =""}) {
     render={({field: {onChange}}) => (
         <Editor
         initialValue={defaultValue}
-        apiKey='kah6yt9qz8dn01hzz3zmvkl4fkbqjinuxhw2aifq2oms6em9'
+        apiKey={conf.tinyMCEKey}
         init={{
             initialValue: defaultValue,
             height: 500,
@@ -45,8 +46,10 @@ export default function RTE({name, control, label, defaultValue =""}) {
             "undo redo | blocks | image | bold italic forecolor | alignleft aligncenter bold italic forecolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent |removeformat | help",
             content_style: "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }"
         }}
-        onEditorChange={onChange}
-        />
+onEditorChange={(content) => {
+        onChange(content);
+        console.log("Content from TinyMCE:", content); // Log to confirm content is captured
+      }}        />
     )}
     />
 

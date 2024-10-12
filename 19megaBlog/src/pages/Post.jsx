@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import appwriteService from "../appwrite/config";
@@ -17,10 +18,17 @@ export default function Post() {
     useEffect(() => {
         if (slug) {
             appwriteService.getPost(slug).then((post) => {
+                      console.log(post); // Log the post to check if it's coming correctly
+
                 if (post) setPost(post);
-                else navigate("/");
+
+                else 
+                navigate("/");
             });
-        } else navigate("/");
+        } 
+        console.log('post is false'); // Log the post to check if it's coming correctly
+
+        // else navigate("/");
     }, [slug, navigate]);
 
     const deletePost = () => {
